@@ -1,0 +1,78 @@
+
+-- ZUN HUB v.2
+-- Fling Things and People
+
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+
+local gui = Instance.new("ScreenGui")
+gui.Name = "ZUN_HUB_v2"
+gui.ResetOnSpawn = false
+
+local frame = Instance.new("Frame")
+frame.Size = UDim2.fromOffset(280, 220)
+frame.Position = UDim2.new(0.5, -140, 0.5, -110)
+frame.BackgroundColor3 = Color3.fromRGB(10, 10, 10)
+frame.BorderSizePixel = 0
+frame.Active = true
+frame.Draggable = true
+frame.Parent = gui
+
+local stroke = Instance.new("UIStroke")
+stroke.Color = Color3.fromRGB(0, 60, 220)
+stroke.Thickness = 4
+stroke.Parent = frame
+
+local corner = Instance.new("UICorner")
+corner.CornerRadius = UDim.new(0, 14)
+corner.Parent = frame
+
+local title = Instance.new("TextLabel")
+title.Size = UDim2.new(1, -50, 0, 45)
+title.Position = UDim2.fromOffset(10, 0)
+title.BackgroundTransparency = 1
+title.Text = "ZUN HUB v.2"
+title.TextColor3 = Color3.fromRGB(255, 255, 255)
+title.TextSize = 22
+title.Font = Enum.Font.GothamBold
+title.Parent = frame
+
+local close = Instance.new("TextButton")
+close.Size = UDim2.fromOffset(35, 35)
+close.Position = UDim2.new(1, -40, 0, 5)
+close.Text = "X"
+close.TextSize = 20
+close.TextColor3 = Color3.new(1, 1, 1)
+close.BackgroundColor3 = Color3.fromRGB(150, 0, 0)
+close.Parent = frame
+
+local get = Instance.new("TextButton")
+get.Size = UDim2.new(1, -40, 0, 50)
+get.Position = UDim2.fromOffset(20, 65)
+get.Text = "GET"
+get.TextSize = 24
+get.Font = Enum.Font.GothamBold
+get.TextColor3 = Color3.new(1, 1, 1)
+get.BackgroundColor3 = Color3.fromRGB(0, 45, 160)
+get.Parent = frame
+
+local status = Instance.new("TextLabel")
+status.Size = UDim2.new(1, -20, 0, 40)
+status.Position = UDim2.fromOffset(10, 130)
+status.BackgroundTransparency = 1
+status.Text = "STATUS: READY"
+status.TextColor3 = Color3.new(1, 1, 1)
+status.TextSize = 16
+status.Font = Enum.Font.GothamBold
+status.Parent = frame
+
+get.Activated:Connect(function()
+    status.Text = "SUCCESS!"
+    status.TextColor3 = Color3.fromRGB(0, 255, 100)
+end)
+
+close.Activated:Connect(function()
+    gui:Destroy()
+end)
+
+gui.Parent = player:WaitForChild("PlayerGui")
